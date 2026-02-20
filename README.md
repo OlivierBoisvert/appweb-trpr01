@@ -3,7 +3,7 @@
 > **Cours :** 420-W40-SF - Développement d’applications Web (Cégep de Sainte-Foy)  
 > **Travail :** TP01 - Gestionnaire de produits  
 > **Étudiant(e) :** Olivier Boisvert
-> **Repo GitHub :** https://github.com/OlivierBoisvert/appweb-trpr01
+> **Repo GitHub :** https://github.com/OlivierBoisvert/appweb-trpr01  
 > **Déploiement (GitHub Pages) :** {{ URL du site }}
 
 ---
@@ -26,13 +26,13 @@ Permettre la bonne gestion des équipements à l'aide de l'intégration de plusi
 
 Gérants d'entreprises ayant a équiper ces employés avec des équipement E.G.O pour l'élimination d'anomalies ayant échapper de leur zone de confinement.
 
-**Produit choisi :** Équipement E.G.O extrait à partir d'anomalies. Chaque équipement possède un numéro d'identification, un nom, une description, un cout d'extraction, une quantité en inventaire et une catégorie pour son niveau de puissance (Zayin, Teth, Heh, Waw, Aleph)
+**Produit choisi :** Équipement E.G.O extrait à partir d'anomalies. Chaque équipement possède un numéro d'identification, un nom, une description, un cout d'extraction, une quantité en inventaire et une catégorie pour son niveau de puissance (Zayin, Teth, Heh, Waw, Aleph).
 
 ---
 
 ## 2) Fonctionnalités (récits utilisateurs)
 
-- [ ] Faire la liste des équipements.
+- [ ] Afficher la liste des équipements.
 - [ ] Afficher les informations des équipements.
 - [ ] Ajouter les catégories de classements
 - [ ] Afficher la quantité en inventaire des équipements.
