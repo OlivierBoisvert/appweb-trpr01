@@ -1,0 +1,21 @@
+.list-wrapper {
+  max-width: 900px;
+}
+
+.list-row-grade {
+  width: 80px;
+}
+
+.list-row-info {
+  width: 110px;
+}
+
+.list-row-delete {
+  width: 110px;
+}
+
+.gear-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}

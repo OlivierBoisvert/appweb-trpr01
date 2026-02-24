@@ -34,7 +34,6 @@ Gérants d'entreprises ayant a équiper ces employés avec des équipement E.G.O
 
 - [ ] Afficher la liste des équipements.
 - [ ] Afficher les informations des équipements.
-- [ ] Ajouter les catégories de classements
 - [ ] Afficher la quantité en inventaire des équipements.
 - [ ] Avoir un avertissement quand l'inventaire d'un équipement devient critique.
 - [ ] Rechercher un équipement par son nom.
@@ -45,6 +44,8 @@ Gérants d'entreprises ayant a équiper ces employés avec des équipement E.G.O
 - [ ] Exporter la liste des équipements en format CSV.
 
 > Ajouter ici toute fonctionnalité optionnelle (ex. catégorie, actif, date de création, etc.).
+
+- [x] Ajouter les catégories de classements.
 
 ---
 
@@ -119,31 +120,35 @@ Décrire la structure du projet et les responsabilités.
 
 ### Outil(s) utilisé(s)
 
-- _Nom des outils (ex. ChatGPT, Copilot, etc.)_
+- ChatGPT
 
 ### Comment l’IA a été utilisée
 
 Décrire concrètement :
 
-- brainstorming / planification
-- aide au debug
-- clarification TypeScript/Vue
-- suggestions UI/CSS
-- génération d’exemples (puis adaptation)
+- Assistance avec les standards de placement des fichiers (GearData)
+- Assistance avec le style CSS et Bootstrap de l'application
 
 ### À quel endroit
 
-#### Nom du fichier 1
+#### gearData.ts
 
-- Ligne ## à ##: Décrire pourquoi
-- Ligne ## à ##: Décrire pourquoi
+- Ligne 4: Trouver une méthode propre pour charger une liste de donnée pré-fabriquée
 
-#### Nom du fichier 2
+#### GearList.vue
 
-- Ligne ## à ##: Décrire pourquoi
-- Ligne ## à ##: Décrire pourquoi
+- Ligne 7: Utiliser la liste de donnée pré-fabriquée
+- Ligne 11 à 21: Style Bootstrap
+
+#### GearItem.vue
+
+- Ligne 10 à 45: Style Bootstrap
+
+#### style.css
+
+- Ligne 1 à 21: Style CSS
 
 ### Exemples de prompts (2 à 5)
 
-1. “…”
-2. “…”
+1. “Where would a data file for premade data be placed inside of a Vues + TS project?”
+2. “Using only Bootstrap 5 and CSS, could you help make this layout with no new code (Insert Paint.png)”
