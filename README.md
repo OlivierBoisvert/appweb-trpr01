@@ -142,11 +142,16 @@ Décrire concrètement :
 
 #### GearItem.vue
 
-- Ligne 10 à 45: Style Bootstrap
+- Ligne 16 à 40: Style Bootstrap
+- Ligne 11 à 13: Faire fonctionner l'url des images
 
 #### GearInfo.vue
 
 - Ligne 17: Faire fonctionner le \n avec HTML
+
+#### type.ts
+
+- Ligne 22 à 32: Exporter une fonction et list statique
 
 #### style.css
 
@@ -156,3 +161,4 @@ Décrire concrètement :
 
 1. “Where would a data file for premade data be placed inside of a Vues + TS project?”
 2. “Using only Bootstrap 5 and CSS, could you help make this layout with no new code (Insert Paint.png)”
+3. “How would I make this TS style work in HTML?”

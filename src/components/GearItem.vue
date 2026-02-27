@@ -17,15 +17,15 @@ const getImageUrl = (path: string) => {
     class="list-group-item bg-dark text-light d-flex align-items-center px-3 py-2"
   >
     <div class="flex-grow-1">
-      {{ gear.nom }}
+      {{ gear.name }}
     </div>
 
     <div
       class="list-row-grade d-flex justify-content-center align-items-center"
     >
       <img
-        :src="getImageUrl(gear.categorie.path)"
-        :alt="gear.categorie.name"
+        :src="getImageUrl(gear.category.path)"
+        :alt="gear.category.name"
         class="gear-icon"
       />
     </div>
@@ -35,7 +35,7 @@ const getImageUrl = (path: string) => {
     </div>
 
     <div class="list-row-delete d-flex justify-content-center">
-      <button class="">Delete</button>
+      <button @click="$emit('deleteGear')">Delete</button>
     </div>
   </li>
 
@@ -43,4 +43,4 @@ const getImageUrl = (path: string) => {
     <GearInfo :gear="gear" />
   </div>
 </template>
-<style></style>
+<style scoped></style>

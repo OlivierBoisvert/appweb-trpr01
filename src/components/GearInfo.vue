@@ -13,21 +13,21 @@ const getImageUrl = (path: string) => {
 <template>
   <div>
     <p>Id : {{ gear.id }}</p>
-    <p>Nom : {{ gear.nom }}</p>
+    <p>Nom : {{ gear.name }}</p>
     <p style="white-space: pre-line">
       Description : <br />{{ gear.description }}
     </p>
     <p>
       Catégorie :
-      {{ gear.categorie.name }}
+      {{ gear.category.name }}
       <img
-        :src="getImageUrl(gear.categorie.path)"
-        :alt="gear.categorie.name"
+        :src="getImageUrl(gear.category.path)"
+        :alt="gear.category.name"
         class="gear-icon"
       />
     </p>
-    <p>Coût unitaire : {{ gear.prix }}</p>
+    <p>Coût unitaire : {{ gear.cost }}</p>
     <p>Quantité : {{ gear.stock }}</p>
   </div>
 </template>
-<style></style>
+<style scoped></style>
