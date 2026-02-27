@@ -144,6 +144,10 @@ Décrire concrètement :
 
 - Ligne 10 à 45: Style Bootstrap
 
+#### GearInfo.vue
+
+- Ligne 17: Faire fonctionner le \n avec HTML
+
 #### style.css
 
 - Ligne 1 à 21: Style CSS

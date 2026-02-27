@@ -1,9 +1,16 @@
 <script setup lang="ts">
 import { type Gear } from "../scripts/types";
+import GearInfo from "./GearInfo.vue";
 
 const props = defineProps<{
   gear: Gear;
+  selectedGear?: Gear;
 }>();
+
+//README
+const getImageUrl = (path: string) => {
+  return new URL(path, import.meta.url).href;
+};
 </script>
 <template>
   <li
@@ -17,32 +24,23 @@ const props = defineProps<{
       class="list-row-grade d-flex justify-content-center align-items-center"
     >
       <img
-        src="../assets/images/zayin.webp"
-        alt="Zayin"
+        :src="getImageUrl(gear.categorie.path)"
+        :alt="gear.categorie.name"
         class="gear-icon"
-        v-if="gear.categorie.name === 'Zayin'"
-      />
-      <img
-        src="../assets/images/teth.webp"
-        alt="Teth"
-        class="gear-icon"
-        v-else-if="gear.categorie.name === 'Teth'"
-      />
-      <img
-        src="../assets/images/he.webp"
-        alt="He"
-        class="gear-icon"
-        v-else-if="gear.categorie.name === 'He'"
       />
     </div>
 
     <div class="list-row-info d-flex justify-content-center">
-      <button class="">Info</button>
+      <button @click="$emit('selectGear')">Info</button>
     </div>
 
     <div class="list-row-delete d-flex justify-content-center">
       <button class="">Delete</button>
     </div>
   </li>
+
+  <div v-if="gear.id === selectedGear?.id">
+    <GearInfo :gear="gear" />
+  </div>
 </template>
 <style></style>
