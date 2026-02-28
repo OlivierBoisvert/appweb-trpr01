@@ -5,7 +5,6 @@ const props = defineProps<{
   gear: Gear;
 }>();
 
-//README
 const getImageUrl = (path: string) => {
   return new URL(path, import.meta.url).href;
 };

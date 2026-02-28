@@ -67,30 +67,27 @@ Implémenter les données pré-fabriquées et créer la liste dynamique
 
 ---
 
-## Séance 3 — _AAAA-MM-JJ_ (Durée : _XhYm_)
+## Séance 3 — _2026-02-27_ (Durée : _2h50m_)
 
 **Objectif de la séance :**  
-…
+Ajouter plus de fonctionalité manipulant la liste de données
 
 **Travail réalisé (8–10 lignes min)**
 
-- …
-- …
-- …
-- …
-- …
-- …
-- …
-- …
-- …
+- Ajout de l'option de suppression (Manque la confirmation)
+- Ajout de l'option d'affichage des données d'un gear
+- Changement de la logique d'image dynamique, allant de HardCoder à une solution plus simple
+- Création du formulaire de création de gear et de la fonction pour ajouter un gear valide dans la liste quand créé
+- Ajout de la liste d'avertissements (Manque le style)
+- Changement du schéma initial pour le layout de l'application
 
 **Difficultés / bugs**
 
-- …
+- La passage de la liste d'avertissement pour pouvoir en ajouter à l'intérieur des vue nécessaire
 
 **Solutions / pistes testées**
 
-- …
+- Utilisation d'une méthode et liste statique partagée par les vues
 
 ---
 

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { type Gear } from "../scripts/types";
-import { type Grade } from "../scripts/types";
 
 const props = defineProps<{
   placeHolderGear?: Gear;

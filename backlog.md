@@ -29,5 +29,15 @@
 
 |  ID | Priorité | Statut | Titre (tâche)                        | Relié à (RU#) | Critères d’acceptation (définition de done) | Notes / obstacles |
 | --: | :------: | :----: | ------------------------------------ | :-----------: | ------------------------------------------- | ----------------- |
-|  A1 |   MUST   |   🟦   | Afficher dynamiquement la liste      |       5       | Liste propres avec les options voulues      |                   |
-|  A2 |  SHOULD  |   ⬜   | Path dynamique pour img de GearIteam |     5 , 7     | Attribuer la source sans if else            |                   |
+|  A1 |   MUST   |   ✅   | Afficher dynamiquement la liste      |       5       | Liste propres avec les options voulues      |                   |
+|  A2 |  SHOULD  |   ✅   | Path dynamique pour img de GearItem  |     5 , 7     | Attribuer la source sans if else            |                   |
+|  A3 |   MUST   |   ✅   | Afficher les informations de gear    |       7       | Affichage des valeurs attendu               |                   |
+|  A4 |  SHOULD  |   🟦   | Faire le style de la liste           |     5 , 7     | Affichage beau et cohérent                  |                   |
+|  A5 |   MUST   |   🟦   | Création du formulaire de Gear       |   1 , 2 , 3   | Pouvoir ajouter ou modifier un gear         |                   |
+|  A6 |   MUST   |   🟦   | Afficher la liste des avertissment   |       9       | Afficher proprement les avertissements      |                   |
+|  A7 |  SHOULD  |   ⬜   | Faire le style des avertissment      |       9       | Affichage beau et cohérent                  |                   |
+|  A8 |   MUST   |   🟦   | Suppression d'un gear                |       4       | Supprimer avec demande de confirmation      |                   |
+|  A9 |  SHOULD  |   ✅   | Création des données de départ       |       5       | Création d'une liste de données par défaut  |                   |
+| A10 |  SHOULD  |   ⬜   | Faire le style général de la page    |               | Fond de page, placement des composants      |                   |
+| A11 |   MUST   |   ⬜   | Faire la fonction de modification    |       2       | Modification dynamique d'un gear            |                   |
+| A12 |   MUST   |   ⬜   | Indicateur visuelle pour la quantité |       8       | Affichage de couleur cohérent               |                   |

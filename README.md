@@ -128,17 +128,23 @@ Décrire concrètement :
 
 - Assistance avec les standards de placement des fichiers (GearData)
 - Assistance avec le style CSS et Bootstrap de l'application
+- Assistance avec la création de code HTML (Form)
 
 ### À quel endroit
 
 #### gearData.ts
 
-- Ligne 4: Trouver une méthode propre pour charger une liste de donnée pré-fabriquée
+- Ligne 30: Trouver une méthode propre pour charger une liste de donnée pré-fabriquée
+
+#### type.ts
+
+- Ligne 22 à 32: Exporter une fonction et list statique
 
 #### GearList.vue
 
-- Ligne 7: Utiliser la liste de donnée pré-fabriquée
-- Ligne 11 à 21: Style Bootstrap
+- Ligne 7, 15, 66: Importer une fonction statique
+- Ligne 11: Utiliser la liste de donnée pré-fabriquée
+- Ligne 76 à 92: Style Bootstrap
 
 #### GearItem.vue
 
@@ -147,11 +153,15 @@ Décrire concrètement :
 
 #### GearInfo.vue
 
-- Ligne 17: Faire fonctionner le \n avec HTML
+- Ligne 16: Faire fonctionner le \n avec HTML
 
-#### type.ts
+#### GearForm.vue
 
-- Ligne 22 à 32: Exporter une fonction et list statique
+- Ligne 16 à 114: Création du formulaire et style Bootstrap
+
+#### WarningList.vue
+
+- Ligne 3: Importation d'une liste statique
 
 #### style.css
 
@@ -161,4 +171,5 @@ Décrire concrètement :
 
 1. “Where would a data file for premade data be placed inside of a Vues + TS project?”
 2. “Using only Bootstrap 5 and CSS, could you help make this layout with no new code (Insert Paint.png)”
-3. “How would I make this TS style work in HTML?”
+3. “How would I make the \n string line change work in HTML?”
+4. “Could you make a form using Bootstrap 5 in Vue + TS that requires the following fields {...}? Do not make any code logic for the submiting.”

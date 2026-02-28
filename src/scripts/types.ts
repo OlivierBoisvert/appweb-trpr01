@@ -7,11 +7,11 @@ export interface Grade {
 
 export interface Gear {
   id: number;
-  nom: string;
+  name: string;
   description: string;
-  prix: number;
+  cost: number;
   stock: number;
-  categorie: Grade;
+  category: Grade;
 }
 
 export interface Warning {
