@@ -16,6 +16,7 @@ const HE: Grade = {
   path: "../assets/images/he.webp",
 };
 
+//A ajouter
 const WAW: Grade = {
   name: "Waw",
   path: "../assets/images/waw.webp",
