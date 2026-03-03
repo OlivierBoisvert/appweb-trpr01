@@ -2,12 +2,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import GearList from "./components/GearList.vue";
-import WarningList from "./components/WarningList.vue";
 </script>
 
 <template>
-  <WarningList />
   <GearList />
 </template>
 
-<style scoped></style>
+<style>
+body {
+  background-color: #e9e9e9;
+  color: #161616;
+  margin: 0;
+}
+</style>

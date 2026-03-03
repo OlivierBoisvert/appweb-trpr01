@@ -6,6 +6,7 @@ import { defaultGear } from "../data/gearData";
 import GearItem from "./GearItem.vue";
 import { useWarnings } from "../scripts/types";
 import GearForm from "./GearForm.vue";
+import WarningList from "./WarningList.vue";
 
 //ChatGPT README
 const gearList = ref<Gear[]>([...defaultGear]);
@@ -13,6 +14,15 @@ const gearList = ref<Gear[]>([...defaultGear]);
 const gearToShowInfo = ref<Gear>();
 
 const { addWarning } = useWarnings();
+
+const placeholderGear = ref<Gear>({
+  id: 0,
+  name: "",
+  description: "",
+  cost: 0,
+  stock: 0,
+  category: { name: "", path: "" },
+});
 
 function selectGearInfo(gearId: number): void {
   gearList.value.forEach((gear) => {
@@ -69,13 +79,83 @@ function addGearToList(
     }
   }
 }
+
+function setModifyForm(gear: Gear) {
+  placeholderGear.value.name = gear.name;
+  placeholderGear.value.description = gear.description;
+  placeholderGear.value.cost = gear.cost;
+  placeholderGear.value.stock = gear.stock;
+  placeholderGear.value.category = gear.category;
+}
+
+// Modify Gear function
+function modifyGear(
+  id: number,
+  name: string,
+  description: string,
+  cost: number,
+  stock: number,
+  category: string,
+) {
+  const grade: Grade = {
+    name: category,
+    path: "../assets/images/" + category.toLowerCase() + ".webp",
+  };
+
+  if (
+    name.trim() !== "" &&
+    description.trim() !== "" &&
+    cost >= 0 &&
+    stock >= 0 &&
+    category.trim() !== ""
+  ) {
+    gearList.value.forEach((gear) => {
+      if (gear.id === id) {
+        gear.name = name;
+        gear.description = description;
+        gear.cost = cost;
+        gear.stock = stock;
+        gear.category = grade;
+
+        // reset placeholder
+        placeholderGear.value.name = "";
+        placeholderGear.value.description = "";
+        placeholderGear.value.cost = 0;
+        placeholderGear.value.stock = 0;
+        placeholderGear.value.category = { name: "", path: "" };
+
+        if (stock === 0) {
+          addWarning({
+            message: name + " est en rupture de stock.",
+          });
+        }
+      }
+    });
+  }
+}
 </script>
 <template>
-  <GearForm :is-modifying="false" @addGear="addGearToList" />
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <WarningList />
+      </div>
+
+      <div class="col-12 col-md-6">
+        <GearForm
+          :place-holder-gear="placeholderGear"
+          @addGear="addGearToList"
+          @modifyGear="modifyGear"
+        />
+      </div>
+    </div>
+  </div>
 
   <div class="container d-flex justify-content-center mt-4">
-    <div class="list-wrapper w-100">
-      <ul class="list-group list-group-flush" v-if="gearList.length > 0">
+    <div class="gear-list-card w-100">
+      <div class="gear-list-header">Catalogue d'équipement</div>
+
+      <ul v-if="gearList.length > 0" class="gear-list">
         <GearItem
           v-for="gear in gearList"
           :key="gear.id"
@@ -83,13 +163,44 @@ function addGearToList(
           :selected-gear="gearToShowInfo"
           @selectGear="selectGearInfo(gear.id)"
           @deleteGear="deleteGearFromList(gear.id)"
+          @modifyGear="setModifyForm(gear)"
         />
       </ul>
 
-      <ul class="p-3 text-center" v-else>
-        <li>No gear in catalogue</li>
-      </ul>
+      <div v-else class="gear-empty">No gear in catalogue</div>
     </div>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+/* Main card */
+.gear-list-card {
+  background-color: #efecc0;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* Header */
+.gear-list-header {
+  background-color: #4e4361; /* deep purple family */
+  color: white;
+  font-weight: 600;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.1rem;
+}
+
+/* Remove default list styling */
+.gear-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Empty state */
+.gear-empty {
+  padding: 2rem;
+  text-align: center;
+  color: #161616;
+  opacity: 0.6;
+}
+</style>

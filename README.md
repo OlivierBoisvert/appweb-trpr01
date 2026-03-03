@@ -144,28 +144,35 @@ Décrire concrètement :
 
 - Ligne 7, 15, 66: Importer une fonction statique
 - Ligne 11: Utiliser la liste de donnée pré-fabriquée
-- Ligne 76 à 92: Style Bootstrap
+- Ligne 137 à 206: Style Bootstrap
 
 #### GearItem.vue
 
-- Ligne 16 à 40: Style Bootstrap
+- Ligne 15 à 127: Style Bootstrap
 - Ligne 11 à 13: Faire fonctionner l'url des images
 
 #### GearInfo.vue
 
 - Ligne 16: Faire fonctionner le \n avec HTML
+- Ligne 12 à 123: Style Bootstrap
 
 #### GearForm.vue
 
 - Ligne 16 à 114: Création du formulaire et style Bootstrap
+- Ligne 15 à 193: Style Bootstrap
 
 #### WarningList.vue
 
 - Ligne 3: Importation d'une liste statique
+- Ligne 5 à 58: Style Bootstrap
 
 #### style.css
 
 - Ligne 1 à 21: Style CSS
+
+#### App.vue
+
+- Ligne 11 à 17: Style Bootstrap
 
 ### Exemples de prompts (2 à 5)
 
