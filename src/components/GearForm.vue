@@ -6,6 +6,7 @@ import { type Gear } from "../scripts/types";
 const props = defineProps<{
   placeHolderGear: Gear;
   isModifying: boolean;
+  isDuplicating: boolean;
 }>();
 
 const emit = defineEmits(["addGear", "modifyGear", "cancelModification"]);
@@ -24,9 +25,9 @@ function openCancelModal() {
 }
 
 function confirmCancel() {
-  resetFormValidation();
   cancelModal.hide();
   emit("cancelModification");
+  resetFormValidation();
 }
 
 const formRef = ref<HTMLFormElement | null>(null);
@@ -72,8 +73,13 @@ function resetFormValidation() {
 <template>
   <div class="card gear-card shadow-sm h-100">
     <div class="card-body">
-      <h4 class="card-title mb-4" v-if="!isModifying">Ajouter un équipement</h4>
-      <h4 class="card-title mb-4" v-else>Modifier un équipement</h4>
+      <h4 class="card-title mb-4" v-if="!isModifying && !isDuplicating">
+        Ajouter un équipement
+      </h4>
+      <h4 class="card-title mb-4" v-else-if="isModifying">
+        Modifier un équipement
+      </h4>
+      <h4 class="card-title mb-4" v-else>Dupliquer un équipement</h4>
 
       <form
         ref="formRef"
@@ -152,7 +158,7 @@ function resetFormValidation() {
             class="form-select"
             required
           >
-            <option disabled value="">Select Category</option>
+            <option disabled value="">Sélectionnez une catégorie</option>
             <option value="Zayin">Zayin</option>
             <option value="Teth">Teth</option>
             <option value="He">He</option>
@@ -173,6 +179,7 @@ function resetFormValidation() {
 
         <button
           v-if="isModifying"
+          type="button"
           @click="openCancelModal"
           class="btn btn-cancel"
         >

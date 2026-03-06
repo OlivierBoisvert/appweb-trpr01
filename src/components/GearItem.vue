@@ -60,6 +60,9 @@ const getImageUrl = (path: string) => {
       <button class="btn btn-modify-custom" @click="$emit('modifyGear')">
         Modifier
       </button>
+      <button class="btn btn-dupe-custom" @click="$emit('duplicateGear')">
+        Dupliquer
+      </button>
       <button class="btn btn-delete-custom" @click="openDeleteModal">
         Supprimer
       </button>
@@ -164,6 +167,18 @@ const getImageUrl = (path: string) => {
 }
 .btn-delete-custom:hover {
   background-color: #78000b;
+}
+
+.btn-dupe-custom {
+  background-color: #66dd9f;
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  transition: 0.2s ease;
+}
+.btn-dupe-custom:hover {
+  background-color: #00eadb;
 }
 
 /* Gear info wrapper */

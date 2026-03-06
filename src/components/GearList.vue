@@ -33,9 +33,11 @@ function resetPlaceholderGear(): void {
   placeholderGear.value.category = { name: "", path: "" };
 
   isFormModifying.value = false;
+  isFormDuplicating.value = false;
 }
 
 let isFormModifying = ref<boolean>(false);
+let isFormDuplicating = ref<boolean>(false);
 
 function selectGearInfo(gearId: number): void {
   gearList.value.forEach((gear) => {
@@ -94,8 +96,16 @@ function setModifyForm(gear: Gear) {
   placeholderGear.value.cost = gear.cost;
   placeholderGear.value.stock = gear.stock;
   placeholderGear.value.category = gear.category;
-
   isFormModifying.value = true;
+}
+
+function setDuplicateForm(gear: Gear) {
+  placeholderGear.value.name = gear.name;
+  placeholderGear.value.description = gear.description;
+  placeholderGear.value.cost = gear.cost;
+  placeholderGear.value.stock = gear.stock;
+  placeholderGear.value.category = gear.category;
+  isFormDuplicating.value = true;
 }
 
 // Modify Gear function
@@ -149,9 +159,11 @@ function modifyGear(
         <GearForm
           :place-holder-gear="placeholderGear"
           :is-modifying="isFormModifying"
+          :is-duplicating="isFormDuplicating"
           @addGear="addGearToList"
           @modifyGear="modifyGear"
           @cancelModification="resetPlaceholderGear"
+          @duplicateGear="setDuplicateForm"
         />
       </div>
     </div>
