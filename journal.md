@@ -116,30 +116,26 @@ Faire le style
 
 ---
 
-## Séance 5 — _AAAA-MM-JJ_ (Durée : _XhYm_)
+## Séance 5 — _2026-03-06_ (Durée : _2h50m_)
 
 **Objectif de la séance :**  
-…
+Apporter des correctifs en rapport avec les commentaires de la première version, finalisation de la modification et ajout de la duplication d'équipement
 
 **Travail réalisé (8–10 lignes min)**
 
-- …
-- …
-- …
-- …
-- …
-- …
-- …
-- …
-- …
+- Reformulation des critères d'acceptation dans le journal pour une version plus claire
+- Ajout du fonctionnement de la modification d'un équipement
+- Ajout de la confirmation pour une suppression d'équipement et l'annulation d'une modification
+- Ajout de la validation du formulaire pour le rendre plus facile d'utilisation
+- Ajout de la dupplication d'un équipement
 
 **Difficultés / bugs**
 
-- …
+- Pouvoir identifier le but du formulaire (Ajouter, Duppliquer, Modifier)
 
 **Solutions / pistes testées**
 
-- …
+- Ajout de props pour aider le formualire à identifier son but
 
 ---
 

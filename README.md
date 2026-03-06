@@ -32,15 +32,15 @@ Gérants d'entreprises ayant a équiper ces employés avec des équipement E.G.O
 
 ## 2) Fonctionnalités (récits utilisateurs)
 
-- [ ] Afficher la liste des équipements.
-- [ ] Afficher les informations des équipements.
-- [ ] Afficher la quantité en inventaire des équipements.
-- [ ] Avoir un avertissement quand l'inventaire d'un équipement devient critique.
+- [x] Afficher la liste des équipements.
+- [x] Afficher les informations des équipements.
+- [x] Afficher la quantité en inventaire des équipements.
+- [x] Avoir un avertissement quand l'inventaire d'un équipement devient critique.
 - [ ] Rechercher un équipement par son nom.
-- [ ] Ajouter un nouveau équipement.
-- [ ] Duppliquer un équipement existant pour des ajouts rapides.
-- [ ] Modifier un équipement existant.
-- [ ] Supprimer un équipement.
+- [x] Ajouter un nouveau équipement.
+- [x] Duppliquer un équipement existant pour des ajouts rapides.
+- [x] Modifier un équipement existant.
+- [x] Supprimer un équipement.
 - [ ] Exporter la liste des équipements en format CSV.
 
 > Ajouter ici toute fonctionnalité optionnelle (ex. catégorie, actif, date de création, etc.).
@@ -102,7 +102,7 @@ Décrire la structure du projet et les responsabilités.
 ### Structure des dossiers
 
 - `src/components/` : composants UI (responsabilité unique)
-- `src/models/` : types/interfaces TypeScript (ex. `Product`)
+- `src/scripts/` : types/interfaces TypeScript (Gear, Grade, WarningList)
 - `src/services/` : logique utilitaire (ex. export CSV)
 - `src/assets/` : images (incluant le logo)
 
@@ -110,7 +110,11 @@ Décrire la structure du projet et les responsabilités.
 
 ### Composants clés
 
-- `NomComposant` : description de ce qu'il fait / reponsabilité
+- GearList : Parent, s'occupe du bon fonctionnement des autres composants.
+- GearItem : Affiche individuellement chaque équipement avec leurs boutons
+- GearInfo : Affiche l'information complète d'un équipement sélectionné
+- GearForm : Affichage et validation du formulaire pour les opérations d'équipement
+- WarningList : Affichage de la liste des avertissements pour les ruptures de stocks
 
 ---
 
@@ -142,24 +146,24 @@ Décrire concrètement :
 
 #### GearList.vue
 
-- Ligne 7, 15, 66: Importer une fonction statique
-- Ligne 11: Utiliser la liste de donnée pré-fabriquée
-- Ligne 137 à 206: Style Bootstrap
+- Ligne 9, 16: Importer une fonction statique
+- Ligne 12: Utiliser la liste de donnée pré-fabriquée
+- Ligne 152 à 226: Style Bootstrap
 
 #### GearItem.vue
 
-- Ligne 15 à 127: Style Bootstrap
-- Ligne 11 à 13: Faire fonctionner l'url des images
+- Ligne 43 à 193: Style Bootstrap
+- Ligne 38 à 40: Faire fonctionner l'url des images
+- Ligne 4 à 30: Ajouter la demande de confirmation pour supprimer
 
 #### GearInfo.vue
 
-- Ligne 16: Faire fonctionner le \n avec HTML
-- Ligne 12 à 123: Style Bootstrap
+- Ligne 13 à 123: Style Bootstrap
 
 #### GearForm.vue
 
-- Ligne 16 à 114: Création du formulaire et style Bootstrap
-- Ligne 15 à 193: Style Bootstrap
+- Ligne 73 à 315: Création du formulaire et style Bootstrap
+- Ligne 13 à 71: Validation Bootstrap
 
 #### WarningList.vue
 

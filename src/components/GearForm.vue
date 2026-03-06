@@ -177,7 +177,7 @@ function resetFormValidation() {
           Ajouter
         </button>
 
-        <button type="submit" v-if="isModifying" class="btn btn-modify">
+        <button type="submit" v-else-if="isModifying" class="btn btn-modify">
           Modifier
         </button>
 
