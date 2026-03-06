@@ -169,13 +169,19 @@ function resetFormValidation() {
           <div class="invalid-feedback">Veuillez choisir une catégorie.</div>
         </div>
 
-        <button type="submit" v-if="!isModifying" class="btn btn-add">
+        <button
+          type="submit"
+          v-if="!isModifying && !isDuplicating"
+          class="btn btn-add"
+        >
           Ajouter
         </button>
 
         <button type="submit" v-if="isModifying" class="btn btn-modify">
           Modifier
         </button>
+
+        <button type="submit" v-else class="btn btn-add">Duppliquer</button>
 
         <button
           v-if="isModifying"

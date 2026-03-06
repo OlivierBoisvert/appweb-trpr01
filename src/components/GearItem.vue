@@ -22,7 +22,12 @@ function confirmDelete() {
   emit("deleteGear");
 }
 
-const emit = defineEmits(["selectGear", "modifyGear", "deleteGear"]);
+const emit = defineEmits([
+  "selectGear",
+  "modifyGear",
+  "deleteGear",
+  "duplicateGear",
+]);
 
 const props = defineProps<{
   gear: Gear;

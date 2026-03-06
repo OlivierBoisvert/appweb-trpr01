@@ -163,7 +163,6 @@ function modifyGear(
           @addGear="addGearToList"
           @modifyGear="modifyGear"
           @cancelModification="resetPlaceholderGear"
-          @duplicateGear="setDuplicateForm"
         />
       </div>
     </div>
@@ -182,6 +181,7 @@ function modifyGear(
           @selectGear="selectGearInfo(gear.id)"
           @deleteGear="deleteGearFromList(gear.id)"
           @modifyGear="setModifyForm(gear)"
+          @duplicateGear="setDuplicateForm(gear)"
         />
       </ul>
 
