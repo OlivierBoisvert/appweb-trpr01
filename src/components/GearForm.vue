@@ -1,10 +1,32 @@
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
+import { Modal } from "bootstrap";
 import { type Gear } from "../scripts/types";
 
 const props = defineProps<{
   placeHolderGear: Gear;
   isModifying: boolean;
 }>();
+
+const emit = defineEmits(["addGear", "modifyGear", "cancelModification"]);
+
+const cancelModalRef = ref<HTMLElement | null>(null);
+let cancelModal: Modal;
+
+onMounted(() => {
+  if (cancelModalRef.value) {
+    cancelModal = new Modal(cancelModalRef.value);
+  }
+});
+
+function openCancelModal() {
+  cancelModal.show();
+}
+
+function confirmCancel() {
+  cancelModal.hide();
+  emit("cancelModification");
+}
 </script>
 <template>
   <div class="card gear-card shadow-sm h-100">
@@ -122,12 +144,41 @@ const props = defineProps<{
 
         <button
           v-if="isModifying"
-          @click="$emit('cancelModification')"
+          @click="openCancelModal"
           class="btn btn-cancel"
         >
           Annuler
         </button>
       </form>
+
+      <div
+        class="modal fade"
+        tabindex="-1"
+        ref="cancelModalRef"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Annuler la modification</h5>
+              <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+              Voulez-vous vraiment annuler les modifications ?
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn btn-secondary" data-bs-dismiss="modal">
+                Continuer l'édition
+              </button>
+              <button class="btn btn-danger" @click="confirmCancel">
+                Oui, annuler
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

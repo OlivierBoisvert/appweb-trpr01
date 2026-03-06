@@ -1,6 +1,28 @@
 <script setup lang="ts">
 import { type Gear } from "../scripts/types";
 import GearInfo from "./GearInfo.vue";
+import { ref, onMounted } from "vue";
+import { Modal } from "bootstrap";
+
+const deleteModalRef = ref<HTMLElement | null>(null);
+let deleteModal: Modal;
+
+onMounted(() => {
+  if (deleteModalRef.value) {
+    deleteModal = new Modal(deleteModalRef.value);
+  }
+});
+
+function openDeleteModal() {
+  deleteModal.show();
+}
+
+function confirmDelete() {
+  deleteModal.hide();
+  emit("deleteGear");
+}
+
+const emit = defineEmits(["selectGear", "modifyGear", "deleteGear"]);
 
 const props = defineProps<{
   gear: Gear;
@@ -38,11 +60,35 @@ const getImageUrl = (path: string) => {
       <button class="btn btn-modify-custom" @click="$emit('modifyGear')">
         Modifier
       </button>
-      <button class="btn btn-delete-custom" @click="$emit('deleteGear')">
+      <button class="btn btn-delete-custom" @click="openDeleteModal">
         Supprimer
       </button>
     </div>
   </li>
+
+  <div class="modal fade" tabindex="-1" ref="deleteModalRef" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmation</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          Voulez-vous vraiment supprimer <strong>{{ gear.name }}</strong> ?
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">
+            Annuler
+          </button>
+          <button class="btn btn-danger" @click="confirmDelete">
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Gear Info -->
   <div v-if="gear.id === selectedGear?.id" class="gear-info-wrapper">
