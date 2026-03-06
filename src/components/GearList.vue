@@ -67,32 +67,24 @@ function addGearToList(
 
   let newId: number = Math.max(...gearList.value.map((gear) => gear.id)) + 1;
 
-  if (
-    name.trim() !== "" &&
-    description.trim() !== "" &&
-    cost >= 0 &&
-    stock >= 0 &&
-    category.trim() !== ""
-  ) {
-    let newGear: Gear = {
-      id: newId,
-      name: name,
-      description: description,
-      cost: cost,
-      stock: stock,
-      category: grade,
-    };
+  let newGear: Gear = {
+    id: newId,
+    name: name,
+    description: description,
+    cost: cost,
+    stock: stock,
+    category: grade,
+  };
 
-    gearList.value.push(newGear);
+  gearList.value.push(newGear);
 
-    if (stock === 0) {
-      addWarning({
-        message: name + " est en rupture de stock.",
-      });
-    }
-
-    resetPlaceholderGear();
+  if (stock === 0) {
+    addWarning({
+      message: name + " est en rupture de stock.",
+    });
   }
+
+  resetPlaceholderGear();
 }
 
 function setModifyForm(gear: Gear) {
@@ -120,38 +112,30 @@ function modifyGear(
     path: "../assets/images/" + category.toLowerCase() + ".webp",
   };
 
-  if (
-    name.trim() !== "" &&
-    description.trim() !== "" &&
-    cost >= 0 &&
-    stock >= 0 &&
-    category.trim() !== ""
-  ) {
-    gearList.value.forEach((gear) => {
-      if (gear.id === id) {
-        gear.name = name;
-        gear.description = description;
-        gear.cost = cost;
-        gear.stock = stock;
-        gear.category = grade;
+  gearList.value.forEach((gear) => {
+    if (gear.id === id) {
+      gear.name = name;
+      gear.description = description;
+      gear.cost = cost;
+      gear.stock = stock;
+      gear.category = grade;
 
-        // reset placeholder
-        placeholderGear.value.name = "";
-        placeholderGear.value.description = "";
-        placeholderGear.value.cost = 0;
-        placeholderGear.value.stock = 0;
-        placeholderGear.value.category = { name: "", path: "" };
+      // reset placeholder
+      placeholderGear.value.name = "";
+      placeholderGear.value.description = "";
+      placeholderGear.value.cost = 0;
+      placeholderGear.value.stock = 0;
+      placeholderGear.value.category = { name: "", path: "" };
 
-        if (stock === 0) {
-          addWarning({
-            message: name + " est en rupture de stock.",
-          });
-        }
-
-        resetPlaceholderGear();
+      if (stock === 0) {
+        addWarning({
+          message: name + " est en rupture de stock.",
+        });
       }
-    });
-  }
+
+      resetPlaceholderGear();
+    }
+  });
 }
 </script>
 <template>

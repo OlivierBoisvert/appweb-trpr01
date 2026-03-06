@@ -24,8 +24,49 @@ function openCancelModal() {
 }
 
 function confirmCancel() {
+  resetFormValidation();
   cancelModal.hide();
   emit("cancelModification");
+}
+
+const formRef = ref<HTMLFormElement | null>(null);
+const validated = ref(false);
+
+function submitForm() {
+  if (!formRef.value) return;
+
+  validated.value = true;
+
+  if (!formRef.value.checkValidity()) {
+    return;
+  }
+
+  if (!props.isModifying) {
+    emit(
+      "addGear",
+      props.placeHolderGear.name,
+      props.placeHolderGear.description,
+      props.placeHolderGear.cost,
+      props.placeHolderGear.stock,
+      props.placeHolderGear.category.name,
+    );
+  } else {
+    emit(
+      "modifyGear",
+      props.placeHolderGear.id,
+      props.placeHolderGear.name,
+      props.placeHolderGear.description,
+      props.placeHolderGear.cost,
+      props.placeHolderGear.stock,
+      props.placeHolderGear.category.name,
+    );
+  }
+
+  resetFormValidation();
+}
+
+function resetFormValidation() {
+  validated.value = false;
 }
 </script>
 <template>
@@ -34,7 +75,13 @@ function confirmCancel() {
       <h4 class="card-title mb-4" v-if="!isModifying">Ajouter un équipement</h4>
       <h4 class="card-title mb-4" v-else>Modifier un équipement</h4>
 
-      <form @submit.prevent>
+      <form
+        ref="formRef"
+        class="needs-validation"
+        :class="{ 'was-validated': validated }"
+        novalidate
+        @submit.prevent="submitForm"
+      >
         <!-- Name -->
         <div class="mb-3">
           <label for="name" class="form-label">Nom</label>
@@ -45,6 +92,8 @@ function confirmCancel() {
             class="form-control"
             required
           />
+
+          <div class="invalid-feedback">Le nom est obligatoire.</div>
         </div>
 
         <!-- Description -->
@@ -57,6 +106,7 @@ function confirmCancel() {
             rows="3"
             required
           ></textarea>
+          <div class="invalid-feedback">La description est obligatoire.</div>
         </div>
 
         <!-- Cost -->
@@ -71,6 +121,9 @@ function confirmCancel() {
             class="form-control"
             required
           />
+          <div class="invalid-feedback">
+            Le coût doit être un nombre positif.
+          </div>
         </div>
 
         <!-- Stock -->
@@ -85,6 +138,9 @@ function confirmCancel() {
             class="form-control"
             required
           />
+          <div class="invalid-feedback">
+            Le coût doit être un nombre positif entié.
+          </div>
         </div>
 
         <!-- Category -->
@@ -103,42 +159,15 @@ function confirmCancel() {
             <option value="Waw">Waw</option>
             <option value="Aleph">Aleph</option>
           </select>
+
+          <div class="invalid-feedback">Veuillez choisir une catégorie.</div>
         </div>
 
-        <button
-          v-if="!isModifying"
-          @click="
-            $emit(
-              'addGear',
-              placeHolderGear.name,
-              placeHolderGear.description,
-              placeHolderGear.cost,
-              placeHolderGear.stock,
-              placeHolderGear.category.name,
-            )
-          "
-          class="btn btn-add"
-          :disabled="!placeHolderGear.name.trim()"
-        >
+        <button type="submit" v-if="!isModifying" class="btn btn-add">
           Ajouter
         </button>
 
-        <button
-          v-if="isModifying"
-          @click="
-            $emit(
-              'modifyGear',
-              placeHolderGear.id,
-              placeHolderGear.name,
-              placeHolderGear.description,
-              placeHolderGear.cost,
-              placeHolderGear.stock,
-              placeHolderGear.category.name,
-            )
-          "
-          class="btn btn-modify"
-          :disabled="!placeHolderGear.name.trim()"
-        >
+        <button type="submit" v-if="isModifying" class="btn btn-modify">
           Modifier
         </button>
 
