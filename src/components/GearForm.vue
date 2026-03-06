@@ -1,23 +1,15 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { type Gear } from "../scripts/types";
 
 const props = defineProps<{
   placeHolderGear: Gear;
+  isModifying: boolean;
 }>();
-
-let name = ref<string>("");
-let description = ref<string>("");
-let cost = ref<number>(0);
-let stock = ref<number>(0);
-let category = ref<string>("");
 </script>
 <template>
   <div class="card gear-card shadow-sm h-100">
     <div class="card-body">
-      <h4 class="card-title mb-4" v-if="placeHolderGear.name === ''">
-        Ajouter un équipement
-      </h4>
+      <h4 class="card-title mb-4" v-if="!isModifying">Ajouter un équipement</h4>
       <h4 class="card-title mb-4" v-else>Modifier un équipement</h4>
 
       <form @submit.prevent>
@@ -26,7 +18,7 @@ let category = ref<string>("");
           <label for="name" class="form-label">Nom</label>
           <input
             id="name"
-            v-model="name"
+            v-model="placeHolderGear.name"
             type="text"
             class="form-control"
             required
@@ -38,7 +30,7 @@ let category = ref<string>("");
           <label for="description" class="form-label">Description</label>
           <textarea
             id="description"
-            v-model="description"
+            v-model="placeHolderGear.description"
             class="form-control"
             rows="3"
             required
@@ -50,7 +42,7 @@ let category = ref<string>("");
           <label for="cost" class="form-label">Coût</label>
           <input
             id="cost"
-            v-model.number="cost"
+            v-model.number="placeHolderGear.cost"
             type="number"
             step="0.01"
             min="0"
@@ -64,7 +56,7 @@ let category = ref<string>("");
           <label for="stock" class="form-label">Quantité</label>
           <input
             id="stock"
-            v-model.number="stock"
+            v-model.number="placeHolderGear.stock"
             type="number"
             step="1"
             min="0"
@@ -76,7 +68,12 @@ let category = ref<string>("");
         <!-- Category -->
         <div class="mb-3">
           <label for="category" class="form-label">Catégorie</label>
-          <select id="category" v-model="category" class="form-select" required>
+          <select
+            id="category"
+            v-model="placeHolderGear.category.name"
+            class="form-select"
+            required
+          >
             <option disabled value="">Select Category</option>
             <option value="Zayin">Zayin</option>
             <option value="Teth">Teth</option>
@@ -87,31 +84,48 @@ let category = ref<string>("");
         </div>
 
         <button
-          v-if="placeHolderGear.name === ''"
-          @click="$emit('addGear', name, description, cost, stock, category)"
+          v-if="!isModifying"
+          @click="
+            $emit(
+              'addGear',
+              placeHolderGear.name,
+              placeHolderGear.description,
+              placeHolderGear.cost,
+              placeHolderGear.stock,
+              placeHolderGear.category.name,
+            )
+          "
           class="btn btn-add"
-          :disabled="!name.trim()"
+          :disabled="!placeHolderGear.name.trim()"
         >
           Ajouter
         </button>
 
         <button
-          v-else
+          v-if="isModifying"
           @click="
             $emit(
               'modifyGear',
               placeHolderGear.id,
-              name,
-              description,
-              cost,
-              stock,
-              category,
+              placeHolderGear.name,
+              placeHolderGear.description,
+              placeHolderGear.cost,
+              placeHolderGear.stock,
+              placeHolderGear.category.name,
             )
           "
           class="btn btn-modify"
-          :disabled="!name.trim()"
+          :disabled="!placeHolderGear.name.trim()"
         >
           Modifier
+        </button>
+
+        <button
+          v-if="isModifying"
+          @click="$emit('cancelModification')"
+          class="btn btn-cancel"
+        >
+          Annuler
         </button>
       </form>
     </div>
@@ -188,6 +202,21 @@ let category = ref<string>("");
 }
 
 .btn-delete:hover {
+  background-color: #78000b;
+}
+
+/* Cancel Button (Red family) */
+.btn-cancel {
+  background-color: #d2061b;
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  margin-left: 0.5rem; /* spacing from Modifier */
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
   background-color: #78000b;
 }
 </style>

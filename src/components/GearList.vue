@@ -24,6 +24,19 @@ const placeholderGear = ref<Gear>({
   category: { name: "", path: "" },
 });
 
+function resetPlaceholderGear(): void {
+  placeholderGear.value.id = 0;
+  placeholderGear.value.name = "";
+  placeholderGear.value.description = "";
+  placeholderGear.value.cost = 0;
+  placeholderGear.value.stock = 0;
+  placeholderGear.value.category = { name: "", path: "" };
+
+  isFormModifying.value = false;
+}
+
+let isFormModifying = ref<boolean>(false);
+
 function selectGearInfo(gearId: number): void {
   gearList.value.forEach((gear) => {
     if (gear.id === gearId) {
@@ -77,15 +90,20 @@ function addGearToList(
         message: name + " est en rupture de stock.",
       });
     }
+
+    resetPlaceholderGear();
   }
 }
 
 function setModifyForm(gear: Gear) {
+  placeholderGear.value.id = gear.id;
   placeholderGear.value.name = gear.name;
   placeholderGear.value.description = gear.description;
   placeholderGear.value.cost = gear.cost;
   placeholderGear.value.stock = gear.stock;
   placeholderGear.value.category = gear.category;
+
+  isFormModifying.value = true;
 }
 
 // Modify Gear function
@@ -129,6 +147,8 @@ function modifyGear(
             message: name + " est en rupture de stock.",
           });
         }
+
+        resetPlaceholderGear();
       }
     });
   }
@@ -144,8 +164,10 @@ function modifyGear(
       <div class="col-12 col-md-6">
         <GearForm
           :place-holder-gear="placeholderGear"
+          :is-modifying="isFormModifying"
           @addGear="addGearToList"
           @modifyGear="modifyGear"
+          @cancelModification="resetPlaceholderGear"
         />
       </div>
     </div>
