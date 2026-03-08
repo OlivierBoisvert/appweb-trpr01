@@ -146,9 +146,11 @@ Décrire concrètement :
 
 #### GearList.vue
 
-- Ligne 9, 16: Importer une fonction statique
-- Ligne 12: Utiliser la liste de donnée pré-fabriquée
-- Ligne 152 à 226: Style Bootstrap
+- Ligne 7, 25: Importer une fonction statique
+- Ligne 13: Utiliser la liste de donnée pré-fabriquée
+- Ligne 17, 18: Petite aide avec la syntaxe pour le computed
+- Ligne 160 à 182: Export CSV
+- Ligne 185 à 281: Style Bootstrap
 
 #### GearItem.vue
 
@@ -177,6 +179,11 @@ Décrire concrètement :
 #### App.vue
 
 - Ligne 11 à 17: Style Bootstrap
+
+#### GearSearchName
+
+- Ligne 2 à 16: Champ de recherche dynamique avec mise à jour instantanée du filtre de recherche pour la fonction de filtre des résultats
+- Ligne 5 à 44: Style Bootstrap
 
 ### Exemples de prompts (2 à 5)
 
