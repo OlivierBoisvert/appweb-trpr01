@@ -4,7 +4,7 @@
 > **Travail :** TP01 - Gestionnaire de produits  
 > **Étudiant(e) :** Olivier Boisvert
 > **Repo GitHub :** https://github.com/OlivierBoisvert/appweb-trpr01  
-> **Déploiement (GitHub Pages) :** {{ URL du site }}
+> **Déploiement (GitHub Pages) :** {{ https://olivierboisvert.github.io/appweb-trpr01/ }}
 
 ---
 
