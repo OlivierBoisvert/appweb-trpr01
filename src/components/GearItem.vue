@@ -35,9 +35,7 @@ const props = defineProps<{
 }>();
 
 //README
-const getImageUrl = (path: string) => {
-  return new URL(path, import.meta.url).href;
-};
+const getImageUrl = (path: string) => path;
 </script>
 <template>
   <li class="gear-item d-flex align-items-center px-3 py-2">
