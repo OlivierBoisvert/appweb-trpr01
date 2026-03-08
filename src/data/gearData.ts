@@ -436,4 +436,29 @@ export const defaultGear: Gear[] = [
     stock: 1,
     category: HE,
   },
+
+  {
+    id: 34,
+    name: "Lamp",
+    description:
+      "Big Bird's eyes gained another in number for every creature it saved.\n\
+      On this weapon, the radiant pride is apparent.",
+    cost: 70.0,
+    stock: 1,
+    category: WAW,
+  },
+
+  {
+    id: 35,
+    name: "Justitia",
+    description:
+      "It remembers the scales of the Long Bird that sought not to neglect the weight of even the smallest sins.\n\
+      This weapon may be able to cut not only flesh, but traces of sin as well.\n\
+      The person who extracted this E.G.O was the most righteous person in the company.\n\
+      You need not bother to remove the bandages wrapping the equipment; there's a sorrowful past that it does not want to reveal.\n\
+      Hopefully this E.G.O will aid in keeping the peace as it was originally meant to.",
+    cost: 150.0,
+    stock: 1,
+    category: ALEPH,
+  },
 ];

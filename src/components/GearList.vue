@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { type Gear } from "../scripts/types";
 import { type Grade } from "../scripts/types";
 import { defaultGear } from "../data/gearData";
@@ -7,9 +7,18 @@ import GearItem from "./GearItem.vue";
 import { useWarnings } from "../scripts/types";
 import GearForm from "./GearForm.vue";
 import WarningList from "./WarningList.vue";
+import GearSearchName from "./GearSearchName.vue";
 
 //ChatGPT README
 const gearList = ref<Gear[]>([...defaultGear]);
+
+const searchQuery = ref<string>("");
+
+const filteredGearList = computed(() =>
+  gearList.value.filter((gear) =>
+    gear.name.toLowerCase().includes(searchQuery.value.toLowerCase()),
+  ),
+);
 
 const gearToShowInfo = ref<Gear>();
 
@@ -147,6 +156,30 @@ function modifyGear(
     }
   });
 }
+
+function exportToCSV() {
+  const headers = ["ID", "Nom", "Description", "Prix", "Stock", "Catégorie"];
+  const rows = gearList.value.map((gear) => [
+    gear.id,
+    gear.name,
+    gear.description,
+    gear.cost,
+    gear.stock,
+    gear.category.name,
+  ]);
+
+  const csvContent = [headers, ...rows]
+    .map((row) => row.map(String).join(";"))
+    .join("\n");
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "catalogue.csv";
+  link.click();
+  URL.revokeObjectURL(url);
+}
 </script>
 <template>
   <div class="container mt-4">
@@ -172,11 +205,24 @@ function modifyGear(
 
   <div class="container d-flex justify-content-center mt-4">
     <div class="gear-list-card w-100">
-      <div class="gear-list-header">Catalogue d'équipement</div>
+      <div
+        class="gear-list-header d-flex justify-content-between align-items-center"
+      >
+        Catalogue d'équipement
+        <button class="btn btn-sm btn-export" @click="exportToCSV">
+          Exporter CSV
+        </button>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12">
+          <GearSearchName v-model="searchQuery" />
+        </div>
+      </div>
 
       <ul v-if="gearList.length > 0" class="gear-list">
         <GearItem
-          v-for="gear in gearList"
+          v-for="gear in filteredGearList"
           :key="gear.id"
           :gear="gear"
           :selected-gear="gearToShowInfo"
@@ -222,5 +268,15 @@ function modifyGear(
   text-align: center;
   color: #161616;
   opacity: 0.6;
+}
+
+.btn-export {
+  background-color: #efecc0;
+  color: #4e4361;
+  border: none;
+  font-weight: 600;
+}
+.btn-export:hover {
+  background-color: #fff;
 }
 </style>
