@@ -73,7 +73,7 @@ function addGearToList(
 ) {
   const grade: Grade = {
     name: category,
-    path: "/images/" + category.toLowerCase() + ".webp",
+    path: "/appweb-trpr01/images/" + category.toLowerCase() + ".webp",
   };
 
   let newId: number = Math.max(...gearList.value.map((gear) => gear.id)) + 1;

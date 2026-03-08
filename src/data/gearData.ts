@@ -3,27 +3,27 @@ import { type Grade } from "../scripts/types";
 
 const ZAYIN: Grade = {
   name: "Zayin",
-  path: "/images/zayin.webp",
+  path: "/appweb-trpr01/images/zayin.webp",
 };
 
 const TETH: Grade = {
   name: "Teth",
-  path: "/images/teth.webp",
+  path: "/appweb-trpr01/images/teth.webp",
 };
 
 const HE: Grade = {
   name: "He",
-  path: "/images/he.webp",
+  path: "/appweb-trpr01/images/he.webp",
 };
 
 const WAW: Grade = {
   name: "Waw",
-  path: "/images/waw.webp",
+  path: "/appweb-trpr01/images/waw.webp",
 };
 
 const ALEPH: Grade = {
   name: "Aleph",
-  path: "/images/aleph.webp",
+  path: "/appweb-trpr01/images/aleph.webp",
 };
 
 //ChatGPT, README
