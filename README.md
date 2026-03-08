@@ -4,7 +4,7 @@
 > **Travail :** TP01 - Gestionnaire de produits  
 > **Étudiant(e) :** Olivier Boisvert
 > **Repo GitHub :** https://github.com/OlivierBoisvert/appweb-trpr01  
-> **Déploiement (GitHub Pages) :** {{ https://olivierboisvert.github.io/appweb-trpr01/ }}
+> **Déploiement (GitHub Pages) :** {{ `https://olivierboisvert.github.io/appweb-trpr01/` }}
 
 ---
 
@@ -36,12 +36,12 @@ Gérants d'entreprises ayant a équiper ces employés avec des équipement E.G.O
 - [x] Afficher les informations des équipements.
 - [x] Afficher la quantité en inventaire des équipements.
 - [x] Avoir un avertissement quand l'inventaire d'un équipement devient critique.
-- [ ] Rechercher un équipement par son nom.
+- [x] Rechercher un équipement par son nom.
 - [x] Ajouter un nouveau équipement.
 - [x] Duppliquer un équipement existant pour des ajouts rapides.
 - [x] Modifier un équipement existant.
 - [x] Supprimer un équipement.
-- [ ] Exporter la liste des équipements en format CSV.
+- [x] Exporter la liste des équipements en format CSV.
 
 > Ajouter ici toute fonctionnalité optionnelle (ex. catégorie, actif, date de création, etc.).
 
@@ -51,9 +51,10 @@ Gérants d'entreprises ayant a équiper ces employés avec des équipement E.G.O
 
 ## 3) Technologies utilisées
 
-- {{ Technologie 1 }}
-- {{ Technologie 2 }}
-- {{ Etc. }}
+- {{ Vue }}
+- {{ TypeScript }}
+- {{ BootStrap 5 }}
+- {{ Github }}
 
 ---
 
@@ -66,19 +67,19 @@ Gérants d'entreprises ayant a équiper ces employés avec des équipement E.G.O
 ### Installation
 
 ```bash
-{{ À compléter }}
+{{ 'npm install' }}
 ```
 
 ### Démarrage en dev
 
 ```bash
-{{ À compléter }}
+{{ 'npm run dev' }}
 ```
 
 ### Build
 
 ```bash
-{{ À compléter }}
+{{ 'npm run build' }}
 ```
 
 ---
@@ -86,7 +87,7 @@ Gérants d'entreprises ayant a équiper ces employés avec des équipement E.G.O
 ## 5) Déploiement (GitHub Pages)
 
 - **Nom du repo / dossier GitHub Pages :** `appweb-trpr01`
-- **URL attendue :** {{ `https://<user>.github.io/appweb-trpr01/` }}
+- **URL attendue :** {{ `https://olivierboisvert.github.io/appweb-trpr01/` }}
 
 ### Notes de configuration
 
@@ -103,14 +104,15 @@ Décrire la structure du projet et les responsabilités.
 
 - `src/components/` : composants UI (responsabilité unique)
 - `src/scripts/` : types/interfaces TypeScript (Gear, Grade, WarningList)
-- `src/services/` : logique utilitaire (ex. export CSV)
-- `src/assets/` : images (incluant le logo)
+- `public/` : logo
+- `public/images` : images
 
 > Adapter à votre projet réel. L’objectif est d’expliquer **où** se trouve la logique et **pourquoi**.
 
 ### Composants clés
 
 - GearList : Parent, s'occupe du bon fonctionnement des autres composants.
+- GearSearchName : Affiche le champ de recherche pour le nom.
 - GearItem : Affiche individuellement chaque équipement avec leurs boutons
 - GearInfo : Affiche l'information complète d'un équipement sélectionné
 - GearForm : Affichage et validation du formulaire pour les opérations d'équipement
@@ -125,6 +127,7 @@ Décrire la structure du projet et les responsabilités.
 ### Outil(s) utilisé(s)
 
 - ChatGPT
+- Claude
 
 ### Comment l’IA a été utilisée
 
@@ -133,6 +136,8 @@ Décrire concrètement :
 - Assistance avec les standards de placement des fichiers (GearData)
 - Assistance avec le style CSS et Bootstrap de l'application
 - Assistance avec la création de code HTML (Form)
+- Assistance pour la résolution de bug (Trouver le bug parmis des centaines de lignes)
+- Assistance pour la création de méthodes non vue en classe
 
 ### À quel endroit
 
@@ -191,3 +196,4 @@ Décrire concrètement :
 2. “Using only Bootstrap 5 and CSS, could you help make this layout with no new code (Insert Paint.png)”
 3. “How would I make the \n string line change work in HTML?”
 4. “Could you make a form using Bootstrap 5 in Vue + TS that requires the following fields {...}? Do not make any code logic for the submiting.”
+5. “In those 500 lines of code separated in 3 different component files, find me where this issue {Insert problem} would occur without telling me how to fix it.”
